@@ -34,3 +34,20 @@ python init_db.py
 
 # Iniciar servidor
 uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+## Limpieza de Recursos (Teardown)
+
+El proyecto incluye el script automatizado `teardown.sh` para destruir de forma ordenada y permanente toda la infraestructura aprovisionada en AWS (S3, RDS, Secrets Manager y EC2), evitando consumos y cargos posteriores.
+
+### Ejecución del script
+
+Conéctate a la instancia o ejecuta desde un entorno con AWS CLI autenticado:
+
+```bash
+# Desactivar paginador de AWS CLI para evitar pausas interactivas
+export AWS_PAGER=""
+
+# Otorgar permisos de ejecución y correr el script
+chmod +x teardown.sh
+./teardown.sh
+
